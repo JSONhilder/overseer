@@ -1,0 +1,10 @@
+#project-detail {
+    .list-group-item {
+        margin-bottom: 5px !important;
+        border-top-width: 1px;
+        border-radius: 5px;
+        &.active {
+            border-radius: 5px;
+        }
+    }
+}

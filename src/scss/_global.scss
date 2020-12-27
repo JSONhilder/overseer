@@ -1,0 +1,56 @@
+body {
+    padding: 0;
+}
+// buttons
+button:focus {
+    outline: none !important;
+}
+// Circular buttons
+.btn-circle.btn-sm { 
+    width: 30px; 
+    height: 30px; 
+    padding: 6px 0px; 
+    border-radius: 15px; 
+    font-size: 8px; 
+    text-align: center; 
+} 
+.btn-circle.btn-md { 
+    width: 50px; 
+    height: 50px; 
+    padding: 7px 10px; 
+    border-radius: 25px; 
+    font-size: 10px; 
+    text-align: center; 
+} 
+.btn-circle.btn-xl { 
+    width: 70px; 
+    height: 70px; 
+    padding: 10px 16px; 
+    border-radius: 35px; 
+    font-size: 12px; 
+    text-align: center; 
+} 
+// loader spinner
+#loader {
+    .loader-container {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+    }
+}
+// Control bar
+.control-bar {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    button {
+        float: right;
+    }
+}
+.bi::before {
+    display: inline-block;
+    content: "";
+    background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
