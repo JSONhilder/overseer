@@ -38,11 +38,10 @@
 
 </script>
 
-    <NavBar />
-
-    {#if loading}
+{#if loading}
         <Loader />
-    {:else}
+{:else}
+    <NavBar />
     <section id="dashboard-page" transition:fade>
         <div class="container-fluid">
             <!-- project listings -->
@@ -73,6 +72,4 @@
             </div>
         </div>
     </section>
-    {/if}
-    
-
+{/if}

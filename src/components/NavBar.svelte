@@ -1,5 +1,5 @@
 <script>
-    import MenuModal from "./MenuModal.svelte";
+    import MenuModal from "./modals/MenuModal.svelte";
 
     export let header = "What's on the agenda?";
 </script>

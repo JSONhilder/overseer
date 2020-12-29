@@ -4,6 +4,9 @@
 -->
 <script>
     import { Link } from "svelte-routing";
+    import { authLib } from "../../services/auth";
+
+    const {logout} = authLib();
 </script>
 
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -29,7 +32,7 @@
 	        </nav>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" on:click="{logout}">Logout</button>
         </div>
       </div>
     </div>

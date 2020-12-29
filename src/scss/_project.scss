@@ -6,5 +6,16 @@
         &.active {
             border-radius: 5px;
         }
+        .timer-icon {
+            display: none;
+            cursor: pointer;
+            float: right;
+        }
+        &:hover {
+            background-color: #efefef;
+            .timer-icon {
+                display: block;
+            }
+        }
     }
 }
