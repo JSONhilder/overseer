@@ -16,27 +16,24 @@
 	 * What implications does this have...
 	 */
 	const { user } = authLib();
-
-	$: if($user) {
-		navigate("/", { replace: true });
-	} else {
-		navigate("/login", { replace: true });
-	}
 	
 </script>
+
 {#if $user === null}
-	<Loader/>
+ 	<Loader />
 {:else}
 	<Router url="{url}">
 		<div class="i-am-in-app-file">
-			<Route path="/" component="{Dashboard}"/>
-			<Route path="login" component="{Login}"/>
-			<Route path="project/:id" let:params >
-				<Project id="{params.id}"/>
-			</Route>	
-			<Route path="*">
-				<p>Not found</p>
-			</Route>
+			{#if !$user} 
+				<Route path="*" component="{Login}"/>
+			{:else}
+				<Route path="/" component="{Dashboard}"/>
+				<Route path="login" component="{Login}"/>
+				<Route path="project/:id" let:params >
+					<Project id="{params.id}"/>
+				</Route>	
+			{/if}
 		</div>
 	</Router>
 {/if}
+
