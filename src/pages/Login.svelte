@@ -1,7 +1,7 @@
 <script>
     import { authLib } from "../services/auth";
     import Icon from "svelte-awesome";
-    import { google, github} from "svelte-awesome/icons";
+    import { google, github } from "svelte-awesome/icons";
 
     const { loginWithEmailPassword, loginWithGoogle } = authLib();
 
@@ -42,18 +42,19 @@
                                     Log In
                                 </button>
                             </form>
-                            <br>
-                            <p> Or Login/Register with: </p>
-                            <span on:click="{loginWithGoogle}" style="cursor:pointer">
-                                <Icon data={google} scale="2"/>
-                            </span>
-                            <span style="cursor:pointer">
-                                <Icon data={github} scale="2" />
-                            </span>
-                            <!-- Remind Passowrd
+                            <div class="alternates">
+                                <p> Or Login/Register with: </p>
+                                <span on:click="{loginWithGoogle}">
+                                    <Icon data={google} scale="2"/>
+                                </span>
+                                <span>
+                                    <Icon data={github} scale="2" />
+                                </span>
+                            </div>
+
                             <div id="formFooter">
-                                <a class="underlineHover" href="#">Forgot Password?</a>
-                            </div> -->
+                                <span>Forgot Password?</span>
+                            </div>
                         </div>
                     </div>
                   </div>
@@ -61,28 +62,3 @@
         </div>
     </div>
 </main>
-
-<style>
-    #formContent {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  background: #fff;
-  padding: 30px;
- 
-  position: relative;
-  padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  text-align: center;
-}
-
-#formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
-  text-align: center;
-  -webkit-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px;
-}
-
-</style>
