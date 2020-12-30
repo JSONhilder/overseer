@@ -5,15 +5,16 @@ import 'firebase/auth';
 import { navigate } from "svelte-routing";
 import { readable } from 'svelte/store';
 
+
 // @TODO @FIXME - Move to env file
 const firebaseConfig = {
-    apiKey: "AIzaSyB6CyhRbsbKfUatgojfkTqr_zKNzi3bnUQ",
-    authDomain: "overseer-1995.firebaseapp.com",
-    projectId: "overseer-1995",
-    storageBucket: "overseer-1995.appspot.com",
-    messagingSenderId: "1043453055813",
-    appId: "1:1043453055813:web:e59f726744383dfe05642c",
-    measurementId: "G-QT3CRC0DZ0"
+    apiKey: ENV.FIREBASE_API,
+    authDomain: ENV.FIREBASE_DOMAIN,
+    projectId: ENV.FIREBASE_PROJECT_ID,
+    storageBucket: ENV.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: ENV.FIREBASE_SENDER_ID,
+    appId: ENV.FIREBASE_APP_ID,
+    measurementId: ENV.FIREBASE_MEASUREMENT_ID
 };
 
 // initialize firebase app. required as first step
@@ -56,10 +57,8 @@ export const authLib = () => {
             if (fireUser) {
                 const token = await fireUser.getIdTokenResult();
                 const user = userMapper(token.claims);
-                localStorage.setItem("overseer_auth", "valid");
                 set(user);
             } else {
-                localStorage.removeItem("overseer_auth");
                 set(false);
             }
         });
