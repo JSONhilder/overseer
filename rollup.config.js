@@ -1,12 +1,15 @@
 import svelte from 'rollup-plugin-svelte';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
-import scss from "rollup-plugin-scss";
-import preprocess from "svelte-preprocess"
+import scss from 'rollup-plugin-scss';
+import preprocess from 'svelte-preprocess'
+import dotenv from 'dotenv';
 
+dotenv.config();
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -28,7 +31,7 @@ function serve() {
 			process.on('exit', toExit);
 		}
 	};
-}
+};
 
 export default {
 	input: 'src/main.js',
@@ -39,6 +42,17 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		replace({
+			ENV: JSON.stringify({
+				"FIREBASE_API": process.env.FIREBASE_API,
+				"FIREBASE_DOMAIN": process.env.FIREBASE_DOMAIN,
+				"FIREBASE_PROJECT_ID": process.env.FIREBASE_PROJECT_ID,
+				"FIREBASE_STORAGE_BUCKET": process.env.FIREBASE_STORAGE_BUCKET,
+				"FIREBASE_SENDER_ID": process.env.FIREBASE_SENDER_ID,
+				"FIREBASE_APP_ID": process.env.FIREBASE_APP_ID,
+				"FIREBASE_MEASUREMENT_ID": process.env.FIREBASE_MEASUREMENT_ID
+			})
+		}),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
